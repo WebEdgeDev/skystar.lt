@@ -1,6 +1,6 @@
 import { unWrap, getErrorResponse } from '~/utils/fetchUtils'
 
-export default function ({}, inject) {
+export default function (_, inject) {
   inject('dataApi', {
     getWorks,
     getWork,
