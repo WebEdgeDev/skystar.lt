@@ -1,10 +1,6 @@
 <template>
   <div>
-    <HeroSection />
+    <PageHero image="home.jpg" />
     <AboutSection />
   </div>
 </template>
-
-<script>
-export default {}
-</script>

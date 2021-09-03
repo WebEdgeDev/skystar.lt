@@ -1,11 +1,11 @@
 <template>
-  <nav class="hero-img">
+  <nav>
     <MenuBurger :mobile="mobile" :menu-open="menuOpen" @menu-toggle="menuToggle" />
     <div class="navigation-menu" :class="{ 'hidden-block': !menuOpen }">
       <ul class="nav-links text-[40px] lg:text-[14px] xl:text-[16px]">
         <li><NuxtLink :to="localePath('/')">home</NuxtLink></li>
         <li><NuxtLink :to="localePath('about')">about</NuxtLink></li>
-        <li><NuxtLink :to="localePath('wedding')">wedding films</NuxtLink></li>
+        <li><NuxtLink :to="localePath('weddingfilms')">wedding films</NuxtLink></li>
       </ul>
       <div class="hidden lg:block">
         <a href="#" class="flex justify-center"
@@ -13,7 +13,7 @@
         /></a>
       </div>
       <ul class="nav-links text-[40px] lg:text-[12px] xl:text-[16xp]">
-        <li><NuxtLink :to="localePath('wedding')">other films</NuxtLink></li>
+        <li><NuxtLink :to="localePath('otherfilms')">other films</NuxtLink></li>
         <li><NuxtLink :to="localePath('contact')">contact</NuxtLink></li>
         <li><NuxtLink to="#" class="hidden lg:block">EN</NuxtLink></li>
       </ul>
@@ -77,13 +77,6 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-.hero-img {
-  height: 100vh;
-  background-image: url('/hero.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: top;
-}
 .hidden-block {
   transform: translateX(100vw);
 }

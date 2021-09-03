@@ -25,8 +25,4 @@ module.exports = {
       // abz: ['"ABeeZee"', 'sans-serif'],
     },
   },
-  variants: {
-    extend: {},
-  },
-  plugins: [],
 }
