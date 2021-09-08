@@ -17,6 +17,7 @@ export default {
   plugins: ['~/plugins/dataApi'],
 
   components: [{ pathPrefix: false, path: '~/components' }],
+  router: { prefetchLinks: false },
 
   buildModules: [
     '@nuxtjs/eslint-module',
@@ -33,6 +34,7 @@ export default {
   googleFonts: {
     families: {
       Ovo: [400],
+      'Gilda Display': [400],
     },
   },
   generate: {
