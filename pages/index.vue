@@ -1,6 +1,19 @@
 <template>
-  <div>
+  <main>
     <PageHero image="home.jpg" />
     <AboutSection />
-  </div>
+    <WeddingSection />
+  </main>
 </template>
+
+<script>
+export default {
+  nuxtI18n: {
+    paths: {
+      lt: '/',
+      en: '/',
+      ru: '/',
+    },
+  },
+}
+</script>

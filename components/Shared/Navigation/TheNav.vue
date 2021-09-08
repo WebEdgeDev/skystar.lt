@@ -2,20 +2,51 @@
   <nav>
     <MenuBurger :mobile="mobile" :menu-open="menuOpen" @menu-toggle="menuToggle" />
     <div class="navigation-menu" :class="{ 'hidden-block': !menuOpen }">
-      <ul class="nav-links text-[40px] lg:text-[14px] xl:text-[16px]">
+      <ul class="nav-links text-[24px] lg:text-[14px] xl:text-[16px]">
         <li><NuxtLink :to="localePath('/')">home</NuxtLink></li>
         <li><NuxtLink :to="localePath('about')">about</NuxtLink></li>
         <li><NuxtLink :to="localePath('weddingfilms')">wedding films</NuxtLink></li>
       </ul>
-      <div class="hidden lg:block">
-        <a href="#" class="flex justify-center"
-          ><img class="h-[70%] w-[70%]" src="/kreativ-wedding-logo-NEU-weiss.png" alt=""
-        /></a>
-      </div>
-      <ul class="nav-links text-[40px] lg:text-[12px] xl:text-[16xp]">
+
+      <img class="h-[20%] w-[20%]" src="/logo.png" alt="" />
+      <ul class="nav-links text-[24px] lg:text-[14px] xl:text-[16px]">
         <li><NuxtLink :to="localePath('otherfilms')">other films</NuxtLink></li>
         <li><NuxtLink :to="localePath('contact')">contact</NuxtLink></li>
-        <li><NuxtLink to="#" class="hidden lg:block">EN</NuxtLink></li>
+        <li>
+          <a
+            type="button"
+            class="inline-flex justify-center uppercase w-full px-4 cursor-pointer"
+            @click="dropdown = !dropdown"
+          >
+            {{ $i18n.locale }}
+            <svg
+              class="h-5 w-5"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </a>
+          <div v-if="dropdown" class="absolute mt-2 w-[180px]">
+            <div class="py-1 flex flex-col">
+              <a v-if="$i18n.locale !== 'en'" :href="switchLocalePath('en')"
+                ><span class="hover:text-pink cursor-pointer">EN</span></a
+              >
+              <a v-if="$i18n.locale !== 'lt'" :href="switchLocalePath('lt')"
+                ><span class="hover:text-pink cursor-pointer">LT</span></a
+              >
+              <a v-if="$i18n.locale !== 'ru'" :href="switchLocalePath('ru')"
+                ><span class="hover:text-pink cursor-pointer">RU</span></a
+              >
+            </div>
+          </div>
+        </li>
       </ul>
     </div>
   </nav>
@@ -28,6 +59,7 @@ export default {
       mobile: true,
       menuOpen: false,
       windowWidth: 0,
+      dropdown: false,
     }
   },
   computed: {
@@ -90,7 +122,7 @@ export default {
 }
 
 .nav-links li {
-  @apply block py-2 w-screen border border-r-0 border-l-0;
+  @apply block py-2 w-screen;
 }
 
 @screen lg {
@@ -99,7 +131,7 @@ export default {
   }
 
   .navigation-menu {
-    @apply flex-row justify-between items-center w-full bg-[transparent] h-auto pt-4;
+    @apply absolute flex-row justify-between items-center w-full bg-[transparent] h-auto pt-4;
   }
 
   .nav-links {
