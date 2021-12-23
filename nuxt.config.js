@@ -14,7 +14,7 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
-  plugins: ['~/plugins/dataApi'],
+  plugins: ['~/plugins/vimeo-player'],
 
   components: [{ pathPrefix: false, path: '~/components' }],
   router: { prefetchLinks: false },
@@ -28,8 +28,34 @@ export default {
 
   modules: ['nuxt-i18n'],
   i18n: {
-    locales: ['en', 'lt', 'ru'],
+    vueI18nLoader: true,
+    locales: [
+      {
+        code: 'lt',
+        iso: 'lt',
+        name: 'Lietuvių',
+      },
+      {
+        code: 'en',
+        iso: 'en',
+        name: 'English',
+      },
+      {
+        code: 'ru',
+        iso: 'ru',
+        name: 'Русский',
+      },
+    ],
     defaultLocale: 'en',
+    noPrefixDefaultLocale: true,
+    vueI18n: {
+      fallbackLocale: 'en',
+      messages: {
+        en: require('./locales/en.json'),
+        lt: require('./locales/lt.json'),
+        ru: require('./locales/ru.json'),
+      },
+    },
   },
   googleFonts: {
     families: {
@@ -41,5 +67,7 @@ export default {
     fallback: true,
   },
 
-  build: {},
+  build: {
+    vendor: ['vue-vimeo-player'],
+  },
 }

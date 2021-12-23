@@ -1,0 +1,28 @@
+{
+  "nav": [
+    {
+      "home": "Home",
+      "about": "About",
+      "weddingfilms": "Wedding Films",
+      "news": "News",
+      "contact": "Contact"
+    }
+  ],
+  "hero": [
+    {
+      "and": "and",
+      "creating": "creating",
+      "websites": "websites",
+      "fast": "fast",
+      "secured": "secured",
+      "github_text": "opensource code in",
+      "youtube_text": "free learning videos on",
+      "udemy_text": "paid learning videos on"
+    }
+  ],
+  "general": [
+    {
+      "all": "all"
+    }
+  ]
+}

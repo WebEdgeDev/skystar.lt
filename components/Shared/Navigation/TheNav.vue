@@ -1,49 +1,52 @@
 <template>
-  <nav>
+  <nav class="font-gilda text-2xl lg:text-lg">
     <MenuBurger :mobile="mobile" :menu-open="menuOpen" @menu-toggle="menuToggle" />
-    <div class="navigation-menu" :class="{ 'hidden-block': !menuOpen }">
-      <ul class="nav-links text-[24px] lg:text-[14px] xl:text-[16px]">
-        <li><NuxtLink :to="localePath('/')">home</NuxtLink></li>
-        <li><NuxtLink :to="localePath('about')">about</NuxtLink></li>
-        <li><NuxtLink :to="localePath('weddingfilms')">wedding films</NuxtLink></li>
+    <div
+      class="
+        z-40
+        w-full
+        h-screen
+        fixed
+        flex flex-col
+        justify-around
+        items-center
+        bg-second
+        lg:absolute lg:h-64 lg:flex-row lg:justify-between lg:items-center lg:bg-[transparent]
+      "
+      :class="{ 'hidden-block': !menuOpen }"
+    >
+      <ul class="text-center text-white uppercase lg:flex lg:justify-around lg:w-full lg:pt-5">
+        <li>
+          <NuxtLink class="hover:text-pink block" :to="localePath('/')"> {{ $t('nav[0].home') }}</NuxtLink>
+        </li>
+        <li>
+          <NuxtLink class="hover:text-pink block" :to="localePath('/about')">{{ $t('nav[0].about') }}</NuxtLink>
+        </li>
+        <li>
+          <NuxtLink class="hover:text-pink block" :to="localePath('/wedding-films')">{{ $t('nav[0].weddingfilms') }}</NuxtLink>
+        </li>
       </ul>
 
-      <img class="h-[20%] w-[20%]" src="/logo.png" alt="" />
-      <ul class="nav-links text-[24px] lg:text-[14px] xl:text-[16px]">
-        <li><NuxtLink :to="localePath('otherfilms')">other films</NuxtLink></li>
-        <li><NuxtLink :to="localePath('contact')">contact</NuxtLink></li>
+      <nuxt-link to="/" class="w-[50%] lg:w-[800px]">
+        <img src="/logo.png" alt="" />
+      </nuxt-link>
+      <ul class="text-center text-white uppercase lg:flex lg:justify-around lg:w-full lg:pt-5">
         <li>
-          <a
-            type="button"
-            class="inline-flex justify-center uppercase w-full px-4 cursor-pointer"
-            @click="dropdown = !dropdown"
-          >
-            {{ $i18n.locale }}
-            <svg
-              class="h-5 w-5"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clip-rule="evenodd"
-              />
-            </svg>
-          </a>
-          <div v-if="dropdown" class="absolute mt-2 w-[180px]">
-            <div class="py-1 flex flex-col">
-              <a v-if="$i18n.locale !== 'en'" :href="switchLocalePath('en')"
-                ><span class="hover:text-pink cursor-pointer">EN</span></a
-              >
-              <a v-if="$i18n.locale !== 'lt'" :href="switchLocalePath('lt')"
-                ><span class="hover:text-pink cursor-pointer">LT</span></a
-              >
-              <a v-if="$i18n.locale !== 'ru'" :href="switchLocalePath('ru')"
-                ><span class="hover:text-pink cursor-pointer">RU</span></a
-              >
+          <NuxtLink class="hover:text-pink block" :to="localePath('/news')">{{ $t('nav[0].news') }}</NuxtLink>
+        </li>
+        <li>
+          <NuxtLink class="hover:text-pink block" :to="localePath('/contacts')">{{ $t('nav[0].contact') }}</NuxtLink>
+        </li>
+        <li>
+          <div class="relative" @mouseleave="dropdown = false">
+            <button class="mx-2 uppercase" @click="dropdown = !dropdown">
+              {{ $i18n.locale }}
+              <span class="inline-block border-white border-r-2 border-b-2 mb-1 p-[2px] up" :class="{ down: !dropdown }"></span>
+            </button>
+            <div v-if="dropdown" class="absolute flex flex-col w-[100%] left-[-6px]">
+              <a v-if="$i18n.locale !== 'en'" :href="switchLocalePath('en')"><span class="hover:text-pink">EN</span></a>
+              <a v-if="$i18n.locale !== 'lt'" :href="switchLocalePath('lt')"><span class="hover:text-pink">LT</span></a>
+              <a v-if="$i18n.locale !== 'ru'" :href="switchLocalePath('ru')" class="pb-5"><span class="hover:text-pink">RU</span></a>
             </div>
           </div>
         </li>
@@ -113,33 +116,17 @@ export default {
   transform: translateX(100vw);
 }
 
-.navigation-menu {
-  @apply fixed h-screen flex flex-col items-center bg-second z-40 pt-32 pb-6;
+.up {
+  transform: rotate(-135deg);
 }
 
-.nav-links {
-  @apply text-center text-white font-ovo uppercase;
-}
-
-.nav-links li {
-  @apply block py-2 w-screen;
+.down {
+  transform: rotate(45deg);
 }
 
 @screen lg {
   .hidden-block {
     transform: translateY(0);
-  }
-
-  .navigation-menu {
-    @apply absolute flex-row justify-between items-center w-full bg-[transparent] h-auto pt-4;
-  }
-
-  .nav-links {
-    @apply text-white flex font-ovo w-[600px];
-  }
-
-  .nav-links li {
-    @apply my-4 w-[100%]  border-0 tracking-wider;
   }
 }
 </style>

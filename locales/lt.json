@@ -1,0 +1,28 @@
+{
+  "nav": [
+    {
+      "home": "Pagrindinis",
+      "about": "Apie mus",
+      "weddingfilms": "Vestuviniai Filmai",
+      "news": "Naujienos",
+      "contact": "Kontaktai"
+    }
+  ],
+  "hero": [
+    {
+      "and": "ir",
+      "creating": "kuriu",
+      "websites": "svetaines",
+      "fast": "greitas",
+      "secured": "saugias",
+      "github_text": "atviras kodas",
+      "youtube_text": "nemokami video",
+      "udemy_text": "mokami video"
+    }
+  ],
+  "general": [
+    {
+      "all": "visi"
+    }
+  ]
+}
